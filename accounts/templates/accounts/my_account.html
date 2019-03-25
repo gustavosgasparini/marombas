@@ -1,0 +1,38 @@
+{% extends "base_profile.html" %}
+{% load static %}
+
+{% block title %}Profile page{% endblock %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-header">
+                    My Account
+                </div>
+                <div class="card-body profiles-card">
+                    <div class="row">
+                        <div class="col-md-2">
+                            Profile
+                        </div>
+                        <div class="col-md-1">
+                            <div class="vl-card"></div>
+                        </div>
+                        <div class="col-md-9">
+                            <form action="" method="post">
+                                <div class="form-group margin-card">
+                                    <textarea class="form-control form-edit mb-3" cols="30" rows="3" placeholder="Description"></textarea>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </form>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

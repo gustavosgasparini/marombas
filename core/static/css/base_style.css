@@ -1,0 +1,158 @@
+body {
+    background-color: #FF9900;
+}
+
+.bg-light {
+    background-color: #fff !important;
+}
+
+.navbar-nav {
+    font-size: 0.9rem;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: #FF9900;
+}
+
+.navbar-light .navbar-brand {
+    color: #FF9900;
+    font-weight: bold;
+    font-size: 1.7em;
+}
+
+.btn-edit {
+    background-color: #FF9900;
+    color: #fff;
+    border: #FF9900;
+}
+
+.btn-color {
+    color: #FF9900;
+}
+
+.btn:hover {
+    color: gray;
+}
+
+a:hover {
+    color: gray;
+    text-decoration: none;
+}
+
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control, .input-group>.form-control-plaintext {
+    width: 25rem;
+}
+
+.prof_pic {
+    border-radius: 50%;
+    width: 1.8rem;
+}
+
+.prof_pic_ind {
+    border-radius: 50%;
+    width: 2.5rem;
+}
+
+.prof_pic_card {
+    border-radius: 50%;
+    width: 5rem;
+    margin: -55px 0px 0px 0px;
+    border: 3px solid white
+}
+
+.prof_main_pic_card {
+    border-radius: 50%;
+    width: 10rem;
+    margin: -120px 0px 0px 0px;
+    border: 3px solid white;
+}
+
+.card-edit {
+    width: 255px;
+    position: fixed;
+}
+
+.card {
+    border: none;
+    border-radius: 0.8rem;
+}
+
+.card-round-top {
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem; 
+}
+
+.card-text {
+    font-size: 0.8rem;
+}
+
+.link-color {
+    color: #FF9900;
+}
+
+.link-color-w {
+    color: white;
+}
+
+.link-color-w:hover {
+    color: #FF9900;
+}
+
+#margin-p {
+    margin-bottom: 88px;
+}
+
+.mar-card-title {
+    margin-bottom: 0px;
+}
+
+.profiles-card {
+    background-color: white;
+    color: black;
+    border-bottom-left-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+}
+
+.footer-copyright {
+    font-size: 0.7rem;
+}
+
+.custom-file-input:lang(en)~.custom-file-label::after {
+    content: "Post Image";
+}
+
+.comment-p {
+    background-color: #efefef;
+    border-radius: 1rem;
+    padding: 0.7rem;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+.round-top-img {
+    height: 260px;
+    border-top-left-radius: 0.7rem;
+    border-top-right-radius: 0.7rem;
+}
+
+.title-name {
+    padding: 0;
+}
+
+.vl {
+    border-left: 1px solid #dddddd;
+    height: 55px;
+}
+
+.vl-card {
+    border-left: 1px solid #dddddd;
+    height: 100%;
+}
+
+.margin-card {
+    margin-left: -45px;
+}
+
+.img-photos {
+    width: 100%;
+}

@@ -1,0 +1,40 @@
+{% extends "base_profile.html" %}
+{% load static %}
+
+{% block title %}Profile page{% endblock %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-header">
+                    About
+                    <a href="#" class="link-color-w float-right"><i class="fas fa-pencil-alt"></i> Edit My Profile</a>
+                </div>
+                <div class="card-body profiles-card">
+                    <div class="row">
+                        <div class="col-md-2">
+                            Overview
+                        </div>
+                        <div class="col-md-1">
+                            <div class="vl-card"></div>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="card-text margin-card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quisquam delectus amet sapiente asperiores cumque veritatis officiis quidem expedita? Accusamus asperiores minima expedita temporibus ut recusandae voluptatem cupiditate fuga consequuntur.</p>
+                            <hr class="margin-card">
+                            <p class="card-text margin-card">
+                                Works out at <a href="#" class="link-color">SmartFit</a> <br>
+                                Last gym at <a href="#" class="link-color">BlueFit</a>
+                            </p>
+                            <p class="card-text margin-card">
+                                Lives in <a href="#" class="link-color">Goiânia</a> <br>
+                                Born in <a href="#" class="link-color">Conchal</a> <br>
+                                February 20th 1990
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

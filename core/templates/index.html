@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} MAROMBAS {% endblock %}
+
+{% block content %}
+    <div class="card text-white bg-secondary">
+        <div class="card-header">Write Something!</div>
+        <div class="card-body profiles-card">
+            <!-- Form to share a text or photos -->
+            <form>
+                <div class="form-group">
+                    <textarea class="form-control form-edit mb-3" cols="30" rows="3"></textarea>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6 d-flex justify-content-center"></div>
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-lg btn-color" style="margin: -10px 0px -10px 0px;"><i class="fas fa-share"></i> Share</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+     
+    <br>
+
+    <!-- All posts in the webapp -->
+    <div class="card">
+        <div class="card-body">
+            <img src="{% static 'img/download.png' %}" class="prof_pic_ind float-left mr-2">
+            <button type="submit" class="btn btn-sm btn-color float-right"><i class="fas fa-trash"></i> Delete Post</button>
+            <a href="#" class="link-color"><h6 class="card-title mar-card-title">Profile01</h6></a>
+            <p class="card-text">2h</p>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <a href="#"><img src="https://dummyimage.com/600x400/707070/ffffff&text=image+cover" class="card-img-top" alt=""></a>
+        <div class="card-body">
+            <p class="card-text text-right">1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="" class="link-color">5 comments</a></p>
+            <hr>
+            <div class="row">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-lg btn-color"><i class="fas fa-thumbs-up"></i> Like</button>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <a href="#" class="btn btn-lg btn-color"><i class="fas fa-comment-alt"></i> Comment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+{% endblock %}
