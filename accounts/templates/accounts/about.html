@@ -5,11 +5,44 @@
 
 {% block content %}
     <div class="row d-flex justify-content-center">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+            <div class="card mb-3">
+                <div class="wrapper">
+                    {% if one_user.cover_image %}
+                        <img src="{{ one_user.cover_image.url }}" class="card-img-top round-top-img">
+                    {% else %}
+                        <img src="https://dummyimage.com/600x400/707070/ffffff&text=image+cover" class="card-img-top round-top-img">
+                    {% endif %}
+                </div>
+                <div class="card-body title-name">
+                    <a href="{% url 'accounts:profile' one_user.pk %}">
+                        {% if one_user.Prof_pic %}
+                            <img src="{{ one_user.Prof_pic.url }}" class="prof_main_pic_card float-left mr-2 ml-3 mb-2">
+                        {% else %}
+                            <img src="{% static 'img/download.png' %}" class="prof_main_pic_card float-left mr-2 ml-3 mb-2">                              
+                        {% endif %}
+                    </a>
+                    <a href="{% url 'accounts:profile' one_user.pk %}" class="link-color float-left"><h5 class="card-title mt-3">{{ one_user.first_name }} {{ one_user.last_name }}</h5></a>
+                    <a href="{% url 'accounts:photos' one_user.pk %}" class="link-color float-right"><h5 class="card-title mr-4 mt-3"><i class="fas fa-images"></i> Photos</h5></a>
+                    <div class="vl float-right mr-4"></div>
+                    <a href="{% url 'accounts:about' one_user.pk %}" class="link-color float-right"><h5 class="card-title mr-4 mt-3"><i class="fas fa-user"></i> About</h5></a>
+                    <div class="vl float-right mr-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
         <div class="col-md-9">
             <div class="card text-white bg-secondary mb-3">
                 <div class="card-header">
                     About
-                    <a href="#" class="link-color-w float-right"><i class="fas fa-pencil-alt"></i> Edit My Profile</a>
+                    {% if user.pk == one_user.pk %}
+                        <a href="{% url 'accounts:my_account' user.pk %}" class="link-color-w float-right"><i class="fas fa-pencil-alt"></i> Edit My Profile</a>
+                    {% else %}
+                    {% endif %}
                 </div>
                 <div class="card-body profiles-card">
                     <div class="row">
@@ -20,16 +53,16 @@
                             <div class="vl-card"></div>
                         </div>
                         <div class="col-md-9">
-                            <p class="card-text margin-card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quisquam delectus amet sapiente asperiores cumque veritatis officiis quidem expedita? Accusamus asperiores minima expedita temporibus ut recusandae voluptatem cupiditate fuga consequuntur.</p>
+                            <p class="card-text margin-card">{{ one_user.description }}</p>
                             <hr class="margin-card">
                             <p class="card-text margin-card">
-                                Works out at <a href="#" class="link-color">SmartFit</a> <br>
-                                Last gym at <a href="#" class="link-color">BlueFit</a>
+                                Works out at <a href="https://bluefit.com.br/" target="_blank" class="link-color">{{ one_user.works_out }}</a> <br>
+                                Last gym at <a href="https://www.smartfit.com.br/" target="_blank" class="link-color">{{ one_user.last_gym }}</a>
                             </p>
                             <p class="card-text margin-card">
-                                Lives in <a href="#" class="link-color">Goiânia</a> <br>
-                                Born in <a href="#" class="link-color">Conchal</a> <br>
-                                February 20th 1990
+                                Lives in <a href="http://www.capital.sp.gov.br/" target="_blank" class="link-color">{{ one_user.city }}</a> <br>
+                                Born in <a href="http://www.conchal.sp.gov.br/source/index.jsp" target="_blank" class="link-color">{{ one_user.hometown }}</a> <br><br>
+                                <i class="fas fa-birthday-cake"></i> {{ one_user.birth_date|date:"d F Y" }}
                             </p>
                         </div>
                     </div>

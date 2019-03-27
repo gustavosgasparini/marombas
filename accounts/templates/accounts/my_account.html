@@ -1,9 +1,40 @@
 {% extends "base_profile.html" %}
 {% load static %}
+{% load bootstrap %}
 
 {% block title %}Profile page{% endblock %}
 
 {% block content %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+            <div class="card mb-3">
+                <div class="wrapper">
+                    {% if one_user.cover_image %}
+                        <img src="{{ one_user.cover_image.url }}" class="card-img-top round-top-img">
+                    {% else %}
+                        <img src="https://dummyimage.com/600x400/707070/ffffff&text=image+cover" class="card-img-top round-top-img">
+                    {% endif %}
+                </div>
+                <div class="card-body title-name">
+                    <a href="{% url 'accounts:profile' one_user.pk %}">
+                        {% if one_user.Prof_pic %}
+                            <img src="{{ one_user.Prof_pic.url }}" class="prof_main_pic_card float-left mr-2 ml-3 mb-2">
+                        {% else %}
+                            <img src="{% static 'img/download.png' %}" class="prof_main_pic_card float-left mr-2 ml-3 mb-2">                              
+                        {% endif %}
+                    </a>
+                    <a href="{% url 'accounts:profile' one_user.pk %}" class="link-color float-left"><h5 class="card-title mt-3">{{ one_user.first_name }} {{ one_user.last_name }}</h5></a>
+                    <a href="{% url 'accounts:photos' one_user.pk %}" class="link-color float-right"><h5 class="card-title mr-4 mt-3"><i class="fas fa-images"></i> Photos</h5></a>
+                    <div class="vl float-right mr-4"></div>
+                    <a href="{% url 'accounts:about' one_user.pk %}" class="link-color float-right"><h5 class="card-title mr-4 mt-3"><i class="fas fa-user"></i> About</h5></a>
+                    <div class="vl float-right mr-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
     <div class="row d-flex justify-content-center">
         <div class="col-md-9">
             <div class="card text-white bg-secondary mb-3">
@@ -12,20 +43,27 @@
                 </div>
                 <div class="card-body profiles-card">
                     <div class="row">
-                        <div class="col-md-2">
-                            Profile
+                        <div class="col-md-3">
+                            <a href="{% url 'accounts:my_account' one_user.pk %}" class="link-color"><strong>Profile</strong></a>
+                            <hr>
+                            <a href="{% url 'accounts:my_account' one_user.pk %}" class="link-color">Change Password</a>
                         </div>
                         <div class="col-md-1">
                             <div class="vl-card"></div>
                         </div>
-                        <div class="col-md-9">
-                            <form action="" method="post">
+                        <div class="col-md-8">
+                            <h4 class="margin-card"><strong>UPDATE YOUR ACCOUNT</strong></h4>
+                            <br>
+                            <form role="form" method="POST" enctype="multipart/form-data">
                                 <div class="form-group margin-card">
-                                    <textarea class="form-control form-edit mb-3" cols="30" rows="3" placeholder="Description"></textarea>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            {% csrf_token %}                                    
+                                            {{ form|bootstrap }}                                         
+                                            <hr>
+                                        </div>
                                     </div>
+                                    <button type="submit" class="btn btn-edit">Update</button>
                                 </div>
                             </form>
                             </p>

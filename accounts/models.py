@@ -12,9 +12,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     birth_date = models.DateField('Birth Date', auto_now=False, null=True)
 
     description = models.TextField('Description', null=True, blank=True)
+    description_card = models.TextField('Brief Description', null=True, blank=True)
     Prof_pic = models.ImageField('Profile Picture', upload_to='user_prof_pic', null=True, blank=True)
+    album_photos = models.ImageField('Album photos', upload_to='album_photos', null=True, blank=True)
+    cover_image = models.ImageField('Cover Image', upload_to='cover_pics', null=True, blank=True)
     date_joined = models.DateTimeField('Date joined', auto_now_add=True)
     works_out = models.CharField('Works out at', max_length=60)
+    last_gym = models.CharField('Last Gym', max_length=60, default='last gym')
     city = models.CharField('Lives in', max_length=60)
     hometown = models.CharField('Hometown', max_length=60)
 
@@ -32,4 +36,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'Users'
 
     def __str__(self):
-        return self.first_name + self.last_name or self.username
+        return f"{self.first_name} {self.last_name}" or self.username

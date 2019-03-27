@@ -46,6 +46,8 @@ a:hover {
 .prof_pic {
     border-radius: 50%;
     width: 1.8rem;
+    height: 1.8rem;
+    object-fit: cover;
 }
 
 .prof_pic_ind {
@@ -56,16 +58,22 @@ a:hover {
 .prof_pic_card {
     border-radius: 50%;
     width: 5rem;
-    margin: -55px 0px 0px 0px;
-    border: 3px solid white
+    height: 5rem;
+    object-fit: cover;
+    margin: -35px 0px 0px 0px;
+    border: 3px solid white;
 }
 
 .prof_main_pic_card {
     border-radius: 50%;
     width: 10rem;
+    height: 10rem;
+    object-fit: cover;
     margin: -120px 0px 0px 0px;
     border: 3px solid white;
 }
+
+
 
 .card-edit {
     width: 255px;
@@ -131,8 +139,19 @@ a:hover {
 
 .round-top-img {
     height: 260px;
+    object-fit: cover;
     border-top-left-radius: 0.7rem;
     border-top-right-radius: 0.7rem;
+}
+
+.wrapper {
+    height: 260px;
+    width: 100%;
+}
+
+.wrapper-base {
+    height: 120px;
+    width: 100%;
 }
 
 .title-name {
@@ -153,6 +172,31 @@ a:hover {
     margin-left: -45px;
 }
 
-.img-photos {
+.wrapper-img-album {
     width: 100%;
+    height: 174px;
+}
+
+.wrapper-prof-pic {
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: -6.6rem;
+}
+
+.img-photos {
+    width: 174px;
+    height: 174px;
+    object-fit: cover;
+}
+
+.card-body-edit {
+    padding: 0.5rem 1.25rem 1.25rem 1.25rem
+}
+
+label {
+    color: #FF9900;
+}
+
+h4 {
+    color: gray;
 }

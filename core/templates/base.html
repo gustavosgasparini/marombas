@@ -14,11 +14,12 @@
     <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">MAROMBAS</a>
+                <a class="navbar-brand" href="{% url 'index' %}">MAROMBAS</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <form class="form-inline">
+                <form class="form-inline" method="POST">
+                    <!-- Search don't forget -->
                     <div class="input-group">
                         <input type="search" class="ml-4 form-control form-control-sm" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
@@ -29,13 +30,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><img src="{% static 'img/download.png' %}" class="prof_pic d-inline-block align-top mr-1"> Profile01</a>
+                            <a href="{% url 'accounts:profile' user.pk %}" class="nav-link">
+                                {% if user.Prof_pic %}
+                                    <img src="{{ user.Prof_pic.url }}" class="prof_pic d-inline-block align-top mr-1">{{ user }}
+                                {% else %}
+                                    <img src="{% static 'img/download.png' %}" class="prof_pic d-inline-block align-top mr-1">{{ user }}
+                                {% endif %}
+                            </a>
                         </li>
                         <li class="nav-item">
                             <span class="nav-link">|</span>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">My Account</a>
+                            <a href="{% url 'accounts:my_account' user.pk %}" class="nav-link">My Account</a>
                         </li>
                         <li class="nav-item">
                             <a href="{% url 'logout' %}" class="nav-link">Logout</a>
@@ -52,13 +59,35 @@
                 <div class="col-md-3">
                     <!-- User profile card -->
                     <div class="card card-edit">
-                        <img src="https://dummyimage.com/600x400/707070/ffffff&text=image+cover" class="card-img-top card-round-top" style="height: 120px;" alt="Cover Image">
-                        <div class="card-body">
-                            <img src="{% static 'img/download.png' %}" class="prof_pic_card float-left mr-2">
-                            <a href="#" class="link-color"><h6 class="card-title">Profile01</h6></a>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <p class="card-text">Works out at <a href="#" class="link-color">SmartFit</a></p>
-                            <p class="card-text">Lives in <a href="#" class="link-color">Goiânia</a></p>
+                        <div class="wrapper-base">
+                            {% if user.cover_image %}
+                                <img src="{{ user.cover_image.url }}" class="card-img-top card-round-top" style="height: 120px; object-fit: cover" alt="Cover Image">
+                            {% else %}
+                                <img src="https://dummyimage.com/600x400/707070/ffffff&text=image+cover" class="card-img-top card-round-top" style="height: 120px; object-fit: cover" alt="Cover Image">
+                            {% endif %}
+                        </div>
+                        <div class="card-body card-body-edit">
+                            <a href="{% url 'accounts:profile' user.pk %}">
+                                {% if user.Prof_pic %}
+                                    <img src="{{ user.Prof_pic.url }}" class="prof_pic_card float-left mr-2">  
+                                {% else %}
+                                    <img src="{% static 'img/download.png' %}" class="prof_pic_card float-left mr-2">                              
+                                {% endif %}
+                            </a>
+                            <a href="{% url 'accounts:profile' user.pk %}" class="link-color"><h6 class="card-title">{{ user }}</h6></a>
+
+                            {% if user.description_card %}
+                                <p class="card-text">{{ user.description_card }}</p>                                
+                            {% else %}
+                                <hr class="mt-5"><a href="#" class="btn btn-sm btn-color"><i class="fas fa-user"></i> Edit My Description</a>
+                            {% endif %}
+
+                            {% if user.city %}
+                                <p class="card-text">Works out at <a href="https://bluefit.com.br/" target="_blank" class="link-color">{{ user.works_out }}</a></p>
+                                <p class="card-text">Lives in <a href="http://www.capital.sp.gov.br/" target="_blank" class="link-color">{{ user.city }}</a></p>  
+                            {% else %}
+                                <hr class="mt-4"><a href="#" class="btn btn-sm btn-color"><i class="fas fa-user"></i> Edit Your City</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -78,9 +107,15 @@
                     <div class="card card-edit text-white bg-secondary mb-3" style="max-width: 18rem;">
                         <div class="card-header">People of MAROMBAS</div>
                         <div class="card-body profiles-card">
-                            <img src="{% static 'img/download.png' %}" class="prof_pic float-left mr-2">
-                            <a href="#" class="link-color"><h6 class="card-title mar-card-title mb-4">Profile02</h6></a>
-                            <hr>
+                            {% for users in user_list %}
+                                {% if users.Prof_pic %}
+                                    <img src="{{ users.Prof_pic.url }}" class="prof_pic float-left mr-2">
+                                {% else %}
+                                    <img src="{% static 'img/download.png' %}" class="prof_pic float-left mr-2">
+                                {% endif %}
+                                <a href="{% url 'accounts:profile' users.pk %}" class="link-color"><h6 class="card-title mar-card-title mb-4">{{ users.first_name }} {{ users.last_name }}</h6></a>
+                                <hr>
+                            {% endfor %}
                             <div class="footer-copyright">©2019 - MAROMBAS <br>
                                 <a href="https://www.djangoproject.com/" target="_blank" class="link-color"> Powered by Django 2.x</a>
                             </div>
