@@ -34,6 +34,14 @@ body {
     color: gray;
 }
 
+.btn-danger:hover {
+    color: white;
+}
+
+.btn-warning:hover {
+    color: white;
+}
+
 a:hover {
     color: gray;
     text-decoration: none;
@@ -53,6 +61,8 @@ a:hover {
 .prof_pic_ind {
     border-radius: 50%;
     width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
 }
 
 .prof_pic_card {
@@ -197,6 +207,15 @@ label {
     color: #FF9900;
 }
 
+li, .help-block {
+    color: #6c757d;
+    font-size: 0.75rem;
+}
+
 h4 {
+    color: gray;
+}
+
+.h5-gray {
     color: gray;
 }

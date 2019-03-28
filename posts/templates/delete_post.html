@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Post page{% endblock %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-header">
+                    Delete Post
+                </div>
+                <div class="card-body profiles-card">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <h5 class="h5-gray mb-3">Are you sure you want to delete this post?</h5>
+                        <button type="submit" class="btn btn-danger mr-2 pr-4 pl-4">Yes</button>
+                        <button type="submit" class="btn btn-warning pr-4 pl-4">No</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            {% if post.author.Prof_pic %}
+                <img src="{{ post.author.Prof_pic.url }}" class="prof_pic_ind float-left mr-2">
+            {% else %}
+                <img src="{% static 'img/download.png' %}" class="prof_pic_ind float-left mr-2">
+            {% endif %}
+    
+            {% if user.pk == post.author.pk %}
+                <a href="{% url 'posts:delete_post' post.pk %}" class="btn btn-sm btn-color float-right"><i class="fas fa-trash"></i> Delete Post</a>           
+            {% else %}                  
+            {% endif %}
+            <a href="{% url 'accounts:profile' post.author.pk %}" class="link-color"><h6 class="card-title mar-card-title">{{ post.author }}</h6></a>
+            <p class="card-text">{{ post.created|date:"d F Y - H:m" }}</p>
+            {% if post.text %}
+                <p class="card-text">{{ post.text }}</p>
+            {% else %}                  
+            {% endif %}
+        </div>
+        {% if post.image %}
+            <a href="{% url 'posts:post_page' post.pk %}"><img src="{{ post.image.url }}" class="card-img-top" alt=""></a>
+        {% else %}              
+        {% endif %}
+        <div class="card-body">
+            <p class="card-text text-right">1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'posts:post_page' post.pk %}" class="link-color">5 comments</a></p>
+            <hr>
+            <div class="row">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-lg btn-color"><i class="fas fa-thumbs-up"></i> Like</button>
+                    </form>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <a href="{% url 'posts:post_page' post.pk %}" class="btn btn-lg btn-color"><i class="fas fa-comment-alt"></i> Comment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endblock %}
