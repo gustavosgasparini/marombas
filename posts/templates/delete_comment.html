@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Post page{% endblock %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-header">
+                    Delete Post
+                </div>
+                <div class="card-body profiles-card">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <h5 class="h5-gray mb-3">Are you sure you want to delete your comment?</h5>
+                        <button type="submit" class="btn btn-danger mr-2 pr-4 pl-4">Yes</button>
+                        <a href="{% url 'posts:post_page' comment.post.pk %}" class="btn btn-warning pr-4 pl-4">No</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            {% if comment.author.Prof_pic %}
+                <img src="{{ comment.author.Prof_pic.url }}" class="prof_pic_ind float-left mr-2">                  
+            {% else %}
+                <img src="{% static 'img/download.png' %}" class="prof_pic_ind float-left mr-2">
+            {% endif %}                            
+            <a href="{% url 'accounts:profile' comment.author.pk %}" class="link-color"><h6 class="card-title mar-card-title">{{ comment.author }}</h6></a>
+            <p class="card-text">{{ comment.created|date:"d F Y - H:m" }}</p>
+            <p class="card-text ml-5 mb-4 comment-p">{{ comment.text }}</p>
+        </div>
+    </div>
+    <br>
+{% endblock %}

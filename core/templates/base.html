@@ -29,7 +29,7 @@
                 </form>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item normal-li">
                             <a href="{% url 'accounts:profile' user.pk %}" class="nav-link">
                                 {% if user.Prof_pic %}
                                     <img src="{{ user.Prof_pic.url }}" class="prof_pic d-inline-block align-top mr-1">{{ user }}
@@ -38,13 +38,13 @@
                                 {% endif %}
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item normal-li">
                             <span class="nav-link">|</span>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item normal-li">
                             <a href="{% url 'accounts:my_account' user.pk %}" class="nav-link">My Account</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item normal-li">
                             <a href="{% url 'logout' %}" class="nav-link">Logout</a>
                         </li>
                     </ul>
@@ -108,11 +108,13 @@
                         <div class="card-header">People of MAROMBAS</div>
                         <div class="card-body profiles-card">
                             {% for users in user_list %}
-                                {% if users.Prof_pic %}
-                                    <img src="{{ users.Prof_pic.url }}" class="prof_pic float-left mr-2">
-                                {% else %}
-                                    <img src="{% static 'img/download.png' %}" class="prof_pic float-left mr-2">
-                                {% endif %}
+                                <a href="{% url 'accounts:profile' users.pk %}">
+                                    {% if users.Prof_pic %}
+                                        <img src="{{ users.Prof_pic.url }}" class="prof_pic float-left mr-2">
+                                    {% else %}
+                                        <img src="{% static 'img/download.png' %}" class="prof_pic float-left mr-2">
+                                    {% endif %}
+                                </a>
                                 <a href="{% url 'accounts:profile' users.pk %}" class="link-color"><h6 class="card-title mar-card-title mb-4">{{ users.first_name }} {{ users.last_name }}</h6></a>
                                 <hr>
                             {% endfor %}

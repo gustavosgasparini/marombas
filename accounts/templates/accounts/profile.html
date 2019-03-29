@@ -117,7 +117,7 @@
                                     {% endif %}
                             
                                     {% if user.pk == posts.author.pk %}
-                                        <a href="{% url 'posts:delete_post' posts.pk %}" class="btn btn-sm btn-color float-right"><i class="fas fa-trash"></i> Delete Post</a>           
+                                        <a href="{% url 'accounts:delete_post_prof' posts.pk %}" class="btn btn-sm btn-color float-right"><i class="fas fa-trash"></i> Delete Post</a>           
                                     {% else %}                  
                                     {% endif %}
                                     <a href="{% url 'accounts:profile' posts.author.pk %}" class="link-color"><h6 class="card-title mar-card-title">{{ posts.author }}</h6></a>
@@ -132,7 +132,7 @@
                                 {% else %}              
                                 {% endif %}
                                 <div class="card-body">
-                                    <p class="card-text text-right">1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'posts:post_page' posts.pk %}" class="link-color">5 comments</a></p>
+                                    <p class="card-text text-right">1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'posts:post_page' posts.pk %}" class="link-color">{{ comment.count }} comment{{ comment|pluralize }}</a></p>
                                     <hr>
                                     <div class="row">
                                         <div class="col-md-6 d-flex justify-content-center">

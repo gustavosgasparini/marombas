@@ -7,7 +7,7 @@ from accounts.forms import UserRegisterForm
 from posts.forms import PostForm
 
 from accounts.models import User
-from posts.models import Post
+from posts.models import Post, Comment
 
 # Create your views here.
 class RegisterView(CreateView):
@@ -20,6 +20,7 @@ class RegisterView(CreateView):
 @login_required
 def IndexPage(request):
     post = Post.objects.order_by('-created')
+    comment = Comment.objects.all()
 
     # This post something in the index
     if request.method == 'POST':
@@ -35,5 +36,6 @@ def IndexPage(request):
     context = {
         'post': post,
         'form_post': form_post,
+        'comment': comment,
     }
     return render(request, 'index.html', context)

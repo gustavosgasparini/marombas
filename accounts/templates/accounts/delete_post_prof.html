@@ -15,7 +15,7 @@
                         {% csrf_token %}
                         <h5 class="h5-gray mb-3">Are you sure you want to delete this post?</h5>
                         <button type="submit" class="btn btn-danger mr-2 pr-4 pl-4">Yes</button>
-                        <a href="{% url 'index' %}" class="btn btn-warning pr-4 pl-4">No</a>
+                        <a href="{% url 'accounts:profile' user.pk %}" class="btn btn-warning pr-4 pl-4">No</a>
                     </form>
                 </div>
             </div>

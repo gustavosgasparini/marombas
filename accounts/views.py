@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import User
 from .forms import UserRegisterUpdateForm
 from posts.forms import PostForm
-from posts.models import Post
+from posts.models import Post, Comment
 
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
@@ -35,6 +35,19 @@ def profile_page(request, pk):
 
 
 @login_required
+def delete_post_prof_page(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    
+    user = request.user
+    if request.method == 'POST':
+        post.delete()
+        return redirect('accounts:profile', user.pk)
+
+    context = {'post': post}
+    return render(request, 'accounts/delete_post_prof.html', context)
+
+
+@login_required
 def about_page(request, pk):
     one_user = get_object_or_404(User, pk=pk)
     context = {'one_user': one_user}
@@ -44,14 +57,33 @@ def about_page(request, pk):
 @login_required
 def photos_page(request, pk):
     one_user = get_object_or_404(User, pk=pk)
-    context = {'one_user': one_user}
+    post = Post.objects.filter(author=one_user).order_by('-created')
+
+    context = {
+        'one_user': one_user,
+        'post': post,
+    }
     return render(request, 'accounts/photos.html', context)
 
 
 @login_required
 def add_photos_page(request, pk):
     one_user = get_object_or_404(User, pk=pk)
-    context = {'one_user': one_user}
+
+    if request.method == 'POST':
+        form_post = PostForm(request.POST or None, request.FILES or None)
+        if form_post.is_valid():
+            form = form_post.save(commit=False)
+            form.author = request.user
+            form.save()
+            return redirect('accounts:photos', pk)
+    else:
+        form_post = PostForm()
+
+    context = {
+        'one_user': one_user,
+        'form_post': form_post,
+    }
     return render(request, 'accounts/add_photos.html', context)
 
 

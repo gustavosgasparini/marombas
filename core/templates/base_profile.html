@@ -28,7 +28,7 @@
                 </form>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item normal-li">
                             <a href="{% url 'accounts:profile' user.pk %}" class="nav-link">
                                 {% if user.Prof_pic %}
                                     <img src="{{ user.Prof_pic.url }}" class="prof_pic d-inline-block align-top mr-1">{{ user }}
@@ -37,13 +37,13 @@
                                 {% endif %}
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item normal-li">
                             <span class="nav-link">|</span>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item normal-li">
                             <a href="{% url 'accounts:my_account' user.pk %}" class="nav-link">My Account</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item normal-li">
                             <a href="{% url 'logout' %}" class="nav-link">Logout</a>
                         </li>
                     </ul>

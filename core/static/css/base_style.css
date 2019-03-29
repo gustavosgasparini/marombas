@@ -183,7 +183,7 @@ a:hover {
 }
 
 .wrapper-img-album {
-    width: 100%;
+    width: 174px;
     height: 174px;
 }
 
@@ -197,6 +197,9 @@ a:hover {
     width: 174px;
     height: 174px;
     object-fit: cover;
+    box-shadow: 0px 0px 6px #c9c9c9;
+    padding: 0.3rem;
+    border-radius: 0.8rem;
 }
 
 .card-body-edit {
@@ -210,6 +213,10 @@ label {
 li, .help-block {
     color: #6c757d;
     font-size: 0.75rem;
+}
+
+.normal-li {
+    font-size: 0.9rem;
 }
 
 h4 {

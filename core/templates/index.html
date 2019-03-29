@@ -38,11 +38,13 @@
     {% for posts in post %}
         <div class="card">
             <div class="card-body">
-                {% if posts.author.Prof_pic %}
-                    <img src="{{ posts.author.Prof_pic.url }}" class="prof_pic_ind float-left mr-2">
-                {% else %}
-                    <img src="{% static 'img/download.png' %}" class="prof_pic_ind float-left mr-2">
-                {% endif %}
+                <a href="{% url 'accounts:profile' posts.author.pk %}">
+                    {% if posts.author.Prof_pic %}
+                        <img src="{{ posts.author.Prof_pic.url }}" class="prof_pic_ind float-left mr-2">
+                    {% else %}
+                        <img src="{% static 'img/download.png' %}" class="prof_pic_ind float-left mr-2">
+                    {% endif %}
+                </a>
         
                 {% if user.pk == posts.author.pk %}
                     <a href="{% url 'posts:delete_post' posts.pk %}" class="btn btn-sm btn-color float-right"><i class="fas fa-trash"></i> Delete Post</a>           
@@ -60,7 +62,14 @@
             {% else %}              
             {% endif %}
             <div class="card-body">
-                <p class="card-text text-right">1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'posts:post_page' posts.pk %}" class="link-color">5 comments</a></p>
+                <p class="card-text text-right">
+                    1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {% if comment in post %}
+                        <a href="{% url 'posts:post_page' posts.pk %}" class="link-color">
+                            {{ comment.count }} comment{{ comment|pluralize }}
+                        </a>                      
+                    {% endif %} 
+                </p>
                 <hr>
                 <div class="row">
                     <div class="col-md-6 d-flex justify-content-center">

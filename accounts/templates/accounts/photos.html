@@ -45,22 +45,16 @@
                     {% endif %}
                 </div>
                 <div class="card-body profiles-card">
-                    <div class="row">
-                        {% if one_user.album_photos %}
-                            <!-- For Loop to create the gallery -->
+                    <div class="row">                        
+                        {% for posts in post %}
+                            <a href="{% url 'posts:post_page' posts.pk %}">
                                 <div class="col-md-3">
                                     <div class="wrapper-img-album">
-                                        <img src="{{ one_user.album_photos.url }}" class="img-photos">
+                                        <img src="{{ posts.image.url }}" class="img-photos">
                                     </div>
                                 </div>
-
-                        {% else %}
-                        <div class="col-md-3">
-                            <div class="wrapper-img-album">
-                                <img src="https://dummyimage.com/400x400/8f8f8f/ffffff&text=image" class="img-photos">
-                            </div>
-                        </div>
-                        {% endif %}
+                            </a>
+                        {% endfor %}                       
                     </div>
                 </div>
             </div>
