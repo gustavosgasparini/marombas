@@ -18,3 +18,7 @@ class Comment(models.Model):
     post    = models.ForeignKey(Post, on_delete=models.CASCADE)
     text    = models.TextField('Comment', blank=True)
     created = models.DateTimeField('Created', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'  

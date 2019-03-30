@@ -132,7 +132,12 @@
                                 {% else %}              
                                 {% endif %}
                                 <div class="card-body">
-                                    <p class="card-text text-right">1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'posts:post_page' posts.pk %}" class="link-color">{{ comment.count }} comment{{ comment|pluralize }}</a></p>
+                                    <p class="card-text text-right">
+                                        1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                        <a href="{% url 'posts:post_page' posts.pk %}" class="link-color">
+                                            {{ posts.comment_set.count }} comment{{ posts.comment_set.count|pluralize }}
+                                        </a>
+                                    </p>
                                     <hr>
                                     <div class="row">
                                         <div class="col-md-6 d-flex justify-content-center">
