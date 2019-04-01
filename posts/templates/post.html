@@ -30,14 +30,25 @@
         {% else %}              
         {% endif %}
         <div class="card-body">
-            <p class="card-text text-right">1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'posts:post_page' post.pk %}" class="link-color">{{ comment.count }} comment{{ comment|pluralize }}</a></p>
+            <p class="card-text text-right">
+                {{ total_likes }} like{{ total_likes|pluralize }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="{% url 'posts:post_page' post.pk %}" class="link-color">
+                    {{ comment.count }} comment{{ comment|pluralize }}
+                </a>
+            </p>
             <hr>
             <div class="row">
                 <div class="col-md-6 d-flex justify-content-center"></div>
                 <div class="col-md-6 d-flex justify-content-center">
-                    <form method="POST">
+                    <form action="{% url 'posts:like_post' %}" method="POST">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-lg btn-color"><i class="fas fa-thumbs-up"></i> Like</button>
+                        <button type="submit" onclick="reloadLike()" id="refreshed" class="btn btn-lg btn-color" value="{{ post.pk }}" name="post_id"><i class="fas fa-thumbs-up"></i> Like</button>
+                        <!-- to reload the page on like button -->
+                        <script type="text/javascript">
+                            function reloadLike() {
+                                location.reload();
+                            }
+                        </script>
                     </form>
                 </div>
             </div>

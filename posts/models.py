@@ -10,6 +10,10 @@ class Post(models.Model):
     updated = models.DateTimeField('Updated', auto_now=True)
     text    = models.TextField('Text', blank=True)
     image   = models.ImageField('Image', upload_to='img_post', null=True, blank=True)
+    likes   = models.ManyToManyField(User, related_name='likes', blank=True)
+
+    def total_likes(self):
+        return self.likes.count()
 
 
 class Comment(models.Model):

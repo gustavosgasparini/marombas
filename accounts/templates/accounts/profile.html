@@ -133,7 +133,7 @@
                                 {% endif %}
                                 <div class="card-body">
                                     <p class="card-text text-right">
-                                        1 like &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                        {{ posts.likes.count }} like{{ posts.likes.count|pluralize }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                         <a href="{% url 'posts:post_page' posts.pk %}" class="link-color">
                                             {{ posts.comment_set.count }} comment{{ posts.comment_set.count|pluralize }}
                                         </a>
@@ -141,9 +141,15 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-md-6 d-flex justify-content-center">
-                                            <form method="POST">
+                                            <form action="{% url 'posts:like_post' %}" method="POST">
                                                 {% csrf_token %}
-                                                <button type="submit" class="btn btn-lg btn-color"><i class="fas fa-thumbs-up"></i> Like</button>
+                                                <button type="submit" onclick="reloadLike()" id="refreshed" class="btn btn-lg btn-color" value="{{ posts.pk }}" name="post_id"><i class="fas fa-thumbs-up"></i> Like</button>
+                                                <!-- to reload the page on like button -->
+                                                <script type="text/javascript">
+                                                    function reloadLike() {
+                                                        location.reload();
+                                                    }
+                                                </script>
                                             </form>
                                         </div>
                                         <div class="col-md-6 d-flex justify-content-center">

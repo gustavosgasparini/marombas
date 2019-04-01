@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} MAROMBAS {% endblock %}
+
+{% block content %}
+    <!-- Search engine, work on this later on -->
+    <form class="form-inline" method="POST">
+        <!-- Search don't forget -->
+        <div class="input-group">
+            <input type="search" class="ml-4 form-control form-control-sm" placeholder="Search" id="search" name="search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-default btn-edit pr-4 pl-4" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

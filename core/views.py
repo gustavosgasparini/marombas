@@ -33,8 +33,13 @@ def IndexPage(request):
     else:
         form_post = PostForm()
 
+    is_liked = False
+    if Post.objects.filter(likes=request.user.pk):
+        is_liked = True
+
     context = {
         'post': post,
         'form_post': form_post,
+        'is_liked': is_liked,
     }
     return render(request, 'index.html', context)

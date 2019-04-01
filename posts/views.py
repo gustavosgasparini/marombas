@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -23,8 +23,24 @@ def PostPage(request, pk):
         'post': post,
         'comment': comment,
         'form_post': form_post,
+        'total_likes': post.total_likes(),
     }
     return render(request, 'post.html', context)
+
+
+@login_required
+def like_post(request):
+    post = get_object_or_404(Post, pk=request.POST.get('post_id'))
+
+    is_liked = False
+    if post.likes.filter(pk=request.user.pk).exists():
+        post.likes.remove(request.user)
+        is_liked = False
+    else:
+        post.likes.add(request.user)
+        is_liked = True
+
+    return HttpResponse('<script>history.back();</script>')
 
 
 @login_required
