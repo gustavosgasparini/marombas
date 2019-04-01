@@ -17,13 +17,13 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserRegisterUpdateForm(UserChangeForm):
-    gender = forms.ChoiceField(choices=GENDER_CHOICES, widget=forms.RadioSelect)
-    Prof_pic = forms.ImageField(widget=forms.FileInput(
+    gender = forms.ChoiceField(required=False, choices=GENDER_CHOICES, widget=forms.RadioSelect)
+    Prof_pic = forms.ImageField(required=False, widget=forms.FileInput(
         attrs= {
             'class': '',
         }
     ))
-    cover_image = forms.ImageField(widget=forms.FileInput(
+    cover_image = forms.ImageField(required=False, widget=forms.FileInput(
         attrs= {
             'class': '',
         }
