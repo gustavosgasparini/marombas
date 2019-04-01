@@ -70,14 +70,17 @@
                             {% if user.description_card %}
                                 <p class="card-text">{{ user.description_card }}</p>                                
                             {% else %}
-                                <hr class="mt-5"><a href="{% url 'accounts:my_account' user.pk %}" class="btn btn-sm btn-color"><i class="fas fa-user"></i> Edit My Description</a>
+                                <hr class="mt-5">
+                                <a href="{% url 'accounts:my_account' user.pk %}" class="btn btn-sm btn-color"><i class="fas fa-user"></i> Edit My Description</a>
                             {% endif %}
 
                             {% if user.city %}
+                                <hr>
                                 <p class="card-text">Works out at <a href="https://bluefit.com.br/" target="_blank" class="link-color">{{ user.works_out }}</a></p>
                                 <p class="card-text">Lives in <a href="http://www.capital.sp.gov.br/" target="_blank" class="link-color">{{ user.city }}</a></p>  
                             {% else %}
-                                <hr class="mt-4"><a href="{% url 'accounts:my_account' user.pk %}" class="btn btn-sm btn-color"><i class="fas fa-user"></i> Edit Your City</a>
+                                <hr class="mt-4">
+                                <a href="{% url 'accounts:my_account' user.pk %}" class="btn btn-sm btn-color"><i class="fas fa-user"></i> Edit Your City</a>
                             {% endif %}
                         </div>
                     </div>
