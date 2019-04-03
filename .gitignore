@@ -3,4 +3,4 @@ venv
 amazon.txt
 credentials.csv
 Credentials.txt
-# .env
+.env
