@@ -24,7 +24,7 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    text = forms.CharField(required=False, widget=forms.Textarea(
+    text = forms.CharField(widget=forms.Textarea(
         attrs = {
             'class': 'form-control form-edit mb-3',
             'cols': 30,
