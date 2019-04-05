@@ -17,4 +17,12 @@ $source venv/bin/activate.
 No windows é outro comando que não me recordo.
 
 ## Rodar testes
-Obs: Por enquanto ainda não há testes, se você está lendo essa mensagem é porque eu ainda não os fiz, quando os fizer e estiverem completos, ela será apagada.
+Para rodar os testes do projeto basta estar na mesma pasta que se encontra o arquivo manage.py e rodar o código no console
+```
+python3 manage.py test
+```
+Se quiser rodar em uma app específica, basta inserir o nome de uma das pasta que possuem testes na frente de test
+```
+python3 manage.py test core
+```
+Ao todo foram feitos 47 testes, averiguando views, forms, urls e models.
