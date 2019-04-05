@@ -15,7 +15,7 @@ class RegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
     template_name = 'register.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('login')
 
 
 @login_required
