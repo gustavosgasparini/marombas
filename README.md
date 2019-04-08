@@ -2,7 +2,7 @@
 Marombas é uma aplicação web criada para pessoas que gostam de exibir seus músculos na academia, mas tem vergonha de se expor em suas redes sociais convencionais, com isso Marombas foi pensado justamente para elas.
 
 ### Desenvolvimento
-Marombas foi desenvolvido em [Python 3.7.0](https://www.python.org/) e [Django 2.1](https://www.djangoproject.com/), ainda é necessário realizar diversas implementações de melhorias, como paginação e carregamento, mas por enquanto esse não será o foco, até porque a aplicação foi desenvolvida como material final de meses de estudo focado inteiramente em web.
+Marombas foi desenvolvido em [Python 3.7.0](https://www.python.org/) e [Django 2.1](https://www.djangoproject.com/), a aplicação foi desenvolvida como material final de meses de estudo focado inteiramente em web.
 
 ## Acesse o site
 Os arquivos estáticos são hospedados na Amazon S3 para funcionar corretamente em conjunto com o Heroku.
